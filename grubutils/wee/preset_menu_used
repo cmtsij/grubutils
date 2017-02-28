@@ -1,5 +1,5 @@
-find --set-root /boot/grub/grldr
-/boot/grub/grldr
+find --set-root /grub/grub4dos/grldr
+/grub/grub4dos/grldr
 timeout 1
 default 0
 
