@@ -38,6 +38,8 @@
 #include <sys/mount.h>
 #include <linux/hdreg.h>
 #include <sys/io.h>
+#include <sys/types.h>
+#include <unistd.h>
 #endif
 
 #include "grub_mbr45cp.h"

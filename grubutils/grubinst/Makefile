@@ -30,7 +30,7 @@ PACKAGE = grubinst
 
 # USE_RC ?=y
 
-extra_SRCS = Makefile Makefile.vc6 Makefile.dos version resource.h ntfsbs.S g2hdr.S grldrstart45cp.S grldrstart45cnp.S grldrstart46ap.S grldrstart46anp.S grubinst.ico
+extra_SRCS = Makefile Makefile.vc6 Makefile.dos version resource.h ntfsbs.S g2hdr.S grubinst.ico
 
 all_DIST = readme.txt changelog.txt grubinst_gui.chs
 
@@ -60,20 +60,20 @@ grubinst.o: version.h grub_mbr45cp.h grub_mbr46ap.h grub_pbr46al.h
 
 grubinst_gui.o: version.h grub_mbr45cp.h grub_mbr46ap.h grub_mbr45cnp.h grub_mbr46anp.h grub_pbr46al.h
 
-grldr45cp.mbr: grldrstart45cp.S ntfsbs.S
+grldr45cp.mbr: ntfsbs.S
 	$(CC) -nostdlib -DGRLDR_MBR -Wl,-N -Wl,-T -Wl,$(CMNDIR)ldscript -o grldr$(EXEEXT) $<
 	$(OC) -O binary grldr$(EXEEXT) $@
 	rm grldr$(EXEEXT)
 
-grldr45cnp.mbr: grldrstart45cnp.S ntfsbs.S
+grldr45cnp.mbr: ntfsbs.S
 	$(CC) -nostdlib -DGRLDR_MBR -Wl,-N -Wl,-T -Wl,$(CMNDIR)ldscript -o grldr$(EXEEXT) $<
 	$(OC) -O binary grldr$(EXEEXT) $@
 	rm grldr$(EXEEXT)
-grldr46ap.mbr: grldrstart46ap.S ntfsbs.S
+grldr46ap.mbr: ntfsbs.S
 	$(CC) -nostdlib -DGRLDR_MBR -Wl,-N -Wl,-T -Wl,$(CMNDIR)ldscript -o grldr$(EXEEXT) $<
 	$(OC) -O binary grldr$(EXEEXT) $@
 	rm grldr$(EXEEXT)
-grldr46anp.mbr: grldrstart46anp.S ntfsbs.S
+grldr46anp.mbr: ntfsbs.S
 	$(CC) -nostdlib -DGRLDR_MBR -Wl,-N -Wl,-T -Wl,$(CMNDIR)ldscript -o grldr$(EXEEXT) $<
 	$(OC) -O binary grldr$(EXEEXT) $@
 	rm grldr$(EXEEXT)
@@ -109,12 +109,12 @@ grubinst_gui$(EXEEXT): grubinst_gui.o utils.o keytab.o xdio.o
 endif
 
 grub_mbr45cp.h: grldr45cp.mbr $(BIN2H_DEPS)
-	./$(BIN2H_EXEC) $< $@ grub_mbr45cp
+	$(BIN2H_EXEC) $< $@ grub_mbr45cp
 grub_mbr45cnp.h: grldr45cnp.mbr $(BIN2H_DEPS)
-	./$(BIN2H_EXEC) $< $@ grub_mbr45cnp
+	$(BIN2H_EXEC) $< $@ grub_mbr45cnp
 grub_mbr46ap.h: grldr46ap.mbr $(BIN2H_DEPS)
-	./$(BIN2H_EXEC) $< $@ grub_mbr46ap
+	$(BIN2H_EXEC) $< $@ grub_mbr46ap
 grub_mbr46anp.h: grldr46anp.mbr $(BIN2H_DEPS)
-	./$(BIN2H_EXEC) $< $@ grub_mbr46anp
-grub_pbr46al.h: grldr46al.pbr $(BIN2H_DEPS)
-	./$(BIN2H_EXEC) $< $@ grub_pbr46al
+	$(BIN2H_EXEC) $< $@ grub_mbr46anp
+grub_pbr46al.h:  $(BIN2H_DEPS)
+	$(BIN2H_EXEC) $< $@ grub_pbr46al

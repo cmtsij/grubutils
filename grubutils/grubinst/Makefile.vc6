@@ -40,8 +40,8 @@ grub_mbr46ap.h: grldr46ap.mbr bin2h.exe
 grub_mbr46anp.h: grldr46anp.mbr bin2h.exe
 	bin2h grldr46anp.mbr grub_mbr46anp.h grub_mbr46anp
 
-grub_pbr46al.h: grldr46al.pbr bin2h.exe
-	bin2h grldr46al.pbr grub_pbr46al.h grub_pbr46al
+grub_pbr46al.h: bin2h.exe
+	bin2h grub_pbr46al.h grub_pbr46al
 
 version.h: version ver2h.exe
 	ver2h version version.h
