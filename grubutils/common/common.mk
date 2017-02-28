@@ -55,8 +55,8 @@ SYSSTR   = w32
 endif
 
 ifneq ($(findstring Linux,$(OSTYPE)),)
-CFLAGS   += -DLINUX
-AFLAGS   += -DLINUX
+CFLAGS   += -DLINUX -m32
+AFLAGS   += -DLINUX -m32
 endif
 
 USE_ZIP  ?= y
